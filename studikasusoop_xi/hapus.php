@@ -1,9 +1,14 @@
-<?php
-	require 'config/Database.php';
-	
-	$id = $_GET['id'];
-	$db = new Database();
-	$db->deleteSiswa($id);
+<?php 
+    require 'config/Siswa_config.php';
+    session_start();
 
-	header("Location: index.php");
+    $id = $_GET['id'];
+    $db = new Siswa();
+    $db->deleteSiswa($id);
+
+    $_SESSION['pesan'] = 'Siswa berhasil terhapus!';
+    $_SESSION['status'] = 'success';
+
+    header("Location: index.php");
+    exit();
 ?>
